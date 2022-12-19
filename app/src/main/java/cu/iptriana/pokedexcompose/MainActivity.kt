@@ -3,21 +3,20 @@ package cu.iptriana.pokedexcompose
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
-import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import cu.iptriana.pokedexcompose.ui.composable.pokemon_list.PokemonListScreen
 import cu.iptriana.pokedexcompose.ui.theme.PokedexComposeTheme
+import cu.iptriana.pokedexcompose.util.Constants.DOMINANT_COLOR
+import cu.iptriana.pokedexcompose.util.Constants.POKEMON_DETAIL_ROUTE
+import cu.iptriana.pokedexcompose.util.Constants.POKEMON_LIST_ROUTE
+import cu.iptriana.pokedexcompose.util.Constants.POKEMON_LIST_SCREEN
+import cu.iptriana.pokedexcompose.util.Constants.POKEMON_NAME
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -27,25 +26,26 @@ class MainActivity : ComponentActivity() {
         setContent {
             PokedexComposeTheme {
                 val navController = rememberNavController()
-                NavHost(navController = navController, startDestination = "pokemon_list_screen"){
-                    composable("pokemon_list_screen"){
-
+                NavHost(navController = navController, startDestination = POKEMON_LIST_SCREEN){
+                    composable(route = POKEMON_LIST_ROUTE){
+                        PokemonListScreen(navController = navController)
                     }
 
-                    composable("pokemon_detail_screen/{dominantColor}/{pokemonName}", arguments = listOf(
-                        navArgument("dominantColor"){
+                    composable(
+                        route = POKEMON_DETAIL_ROUTE, arguments = listOf(
+                        navArgument(name = DOMINANT_COLOR){
                             type = NavType.IntType
                         },
-                        navArgument("pokemonName"){
+                        navArgument(name = POKEMON_NAME){
                             type = NavType.StringType
                         }
                     )){
                         val domainColor = remember {
-                            val color = it.arguments?.getInt("dominantColor")
+                            val color = it.arguments?.getInt(DOMINANT_COLOR)
                             color?.let { Color(it) } ?: Color.White
                         }
                         val pokemonName = remember {
-                            it.arguments?.getString("pokemonName")
+                            it.arguments?.getString(POKEMON_NAME)
                         }
                     }
                 }

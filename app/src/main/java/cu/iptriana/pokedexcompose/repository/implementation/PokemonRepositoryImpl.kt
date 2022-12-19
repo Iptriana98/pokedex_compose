@@ -1,18 +1,19 @@
-package cu.iptriana.pokedexcompose.repository
+package cu.iptriana.pokedexcompose.repository.implementation
 
 import cu.iptriana.pokedexcompose.data.remote.PokeApi
 import cu.iptriana.pokedexcompose.data.remote.response.pokemon_detail.Pokemon
 import cu.iptriana.pokedexcompose.data.remote.response.pokemon_list.PokemonList
+import cu.iptriana.pokedexcompose.repository.PokemonRepo
 import cu.iptriana.pokedexcompose.util.Resource
 import dagger.hilt.android.scopes.ActivityScoped
 import javax.inject.Inject
 
 @ActivityScoped
-internal class PokemonRepository @Inject constructor(
+internal class PokemonRepositoryImpl @Inject constructor(
     private val api: PokeApi
-){
+) : PokemonRepo{
 
-    suspend fun getPokemonList(limit: Int, offset: Int): Resource<PokemonList>{
+    override suspend fun getPokemonList(limit: Int, offset: Int): Resource<PokemonList>{
         val response = try {
             api.getPokemonList(limit, offset)
         } catch (e: Exception){
@@ -21,7 +22,7 @@ internal class PokemonRepository @Inject constructor(
         return Resource.Success(response)
     }
 
-    suspend fun getPokemonInfo(pokemonName: String): Resource<Pokemon> {
+    override suspend fun getPokemonInfo(pokemonName: String): Resource<Pokemon> {
         val response = try {
             api.getPokeInfo(name = pokemonName)
         }catch (e: Error) {

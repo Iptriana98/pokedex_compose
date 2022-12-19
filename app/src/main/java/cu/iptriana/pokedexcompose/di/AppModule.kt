@@ -1,7 +1,8 @@
 package cu.iptriana.pokedexcompose.di
 
 import cu.iptriana.pokedexcompose.data.remote.PokeApi
-import cu.iptriana.pokedexcompose.repository.PokemonRepository
+import cu.iptriana.pokedexcompose.repository.PokemonRepo
+import cu.iptriana.pokedexcompose.repository.implementation.PokemonRepositoryImpl
 import cu.iptriana.pokedexcompose.util.Constants.BASE_URL
 import dagger.Module
 import dagger.Provides
@@ -19,7 +20,7 @@ object AppModule {
     @Provides
     fun providePokemonRepository(
         api: PokeApi
-    ) = PokemonRepository(api)
+    ): PokemonRepo = PokemonRepositoryImpl(api)
 
     @Singleton
     @Provides
