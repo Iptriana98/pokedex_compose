@@ -1,7 +1,7 @@
 package cu.iptriana.pokedexcompose.data.remote
 
-import cu.iptriana.pokedexcompose.data.remote.response.Pokemon
-import cu.iptriana.pokedexcompose.data.remote.response.PokemonList
+import cu.iptriana.pokedexcompose.data.remote.response.pokemon_detail.Pokemon
+import cu.iptriana.pokedexcompose.data.remote.response.pokemon_list.PokemonList
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query

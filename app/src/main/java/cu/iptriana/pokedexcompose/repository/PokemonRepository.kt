@@ -1,8 +1,8 @@
 package cu.iptriana.pokedexcompose.repository
 
 import cu.iptriana.pokedexcompose.data.remote.PokeApi
-import cu.iptriana.pokedexcompose.data.remote.response.Pokemon
-import cu.iptriana.pokedexcompose.data.remote.response.PokemonList
+import cu.iptriana.pokedexcompose.data.remote.response.pokemon_detail.Pokemon
+import cu.iptriana.pokedexcompose.data.remote.response.pokemon_list.PokemonList
 import cu.iptriana.pokedexcompose.util.Resource
 import dagger.hilt.android.scopes.ActivityScoped
 import javax.inject.Inject
