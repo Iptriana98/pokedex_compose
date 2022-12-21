@@ -10,7 +10,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
-import cu.iptriana.pokedexcompose.ui.composable.pokemon_list.PokemonListScreen
+import cu.iptriana.pokedexcompose.ui.composables.pokemon_list.PokemonListScreen
 import cu.iptriana.pokedexcompose.ui.theme.PokedexComposeTheme
 import cu.iptriana.pokedexcompose.util.Constants.DOMINANT_COLOR
 import cu.iptriana.pokedexcompose.util.Constants.POKEMON_DETAIL_ROUTE

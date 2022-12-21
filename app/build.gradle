@@ -80,28 +80,29 @@ dependencies {
 
     //Okhttp3
     def okhttp3_version = "3.12.15"
-   // implementation "com.datadoghq.okhttp3:okhttp:$okhttp3_version"
+    implementation "com.squareup.okhttp3:okhttp:$okhttp3_version"
     implementation 'com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.6'
 
     //Coroutines
-//    def coroutine_version = "1.6.4"
-//    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutine_version"
-//    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutine_version"
+    def coroutine_version = "1.6.4"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutine_version"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutine_version"
 
     //Coroutine lifecycle scopes
-//    def lifecycle_version = "2.5.1"
-//    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
-//    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
+    def lifecycle_version = "2.5.1"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
 
     //Glide
-//    implementation "com.github.bumptech.glide:glide:4.14.2"
+    implementation "com.github.bumptech.glide:compose:1.0.0-alpha.1"
 
     //Hilt
     implementation "com.google.dagger:hilt-android:$rootProject.hilt_version"
     kapt "com.google.dagger:hilt-compiler:$rootProject.hilt_version"
     kapt "androidx.hilt:hilt-compiler:1.0.0"
+    implementation "androidx.hilt:hilt-navigation-compose:1.0.0"
 
     //Android Palette
- //   implementation 'androidx.palette:palette:1.0.0'
+    implementation 'androidx.palette:palette:1.0.0'
 
 }

@@ -1,4 +1,4 @@
-package cu.iptriana.pokedexcompose.ui.composable.pokemon_list
+package cu.iptriana.pokedexcompose.ui.composables.pokemon_list
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
