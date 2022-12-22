@@ -92,9 +92,12 @@ dependencies {
     def lifecycle_version = "2.5.1"
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
+//
+//    //Glide
+//    implementation "com.github.bumptech.glide:compose:1.0.0-alpha.1"
 
-    //Glide
-    implementation "com.github.bumptech.glide:compose:1.0.0-alpha.1"
+    //Coil
+    implementation "io.coil-kt:coil-compose:2.2.2"
 
     //Hilt
     implementation "com.google.dagger:hilt-android:$rootProject.hilt_version"
