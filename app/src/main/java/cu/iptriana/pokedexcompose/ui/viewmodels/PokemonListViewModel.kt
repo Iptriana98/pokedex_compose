@@ -38,7 +38,7 @@ class PokemonListViewModel @Inject constructor(
         when (val response = repository.getPokemonList(PAGE_SIZE, currentPage * PAGE_SIZE)) {
             is Resource.Success -> {
                 endReached.value = currentPage * PAGE_SIZE >= response.data!!.count
-                val pokedexListEntry = response.data.results.mapIndexed { index, entry ->
+                val pokedexListEntry = response.data.results.mapIndexed { _, entry ->
                     val number = if (entry.url.endsWith("/"))
                         entry.url.dropLast(1).takeLastWhile { it.isDigit() }
                     else
