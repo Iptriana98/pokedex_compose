@@ -23,7 +23,7 @@ internal fun PokemonListScreen(
         modifier = Modifier.fillMaxSize()
     ) {
         Column {
-            Spacer(modifier = Modifier.height(20.dp))
+            Spacer(modifier = Modifier.displayCutoutPadding().height(20.dp))
             Image(
                 painter = painterResource(id = R.drawable.ic_international_pok_mon_logo),
                 contentDescription = POKEMON,
@@ -31,12 +31,17 @@ internal fun PokemonListScreen(
                     .fillMaxWidth()
                     .align(CenterHorizontally)
             )
-            SearchBar(hint = stringResource(id = R.string.search), modifier = Modifier
-                .fillMaxWidth()
-                .padding(16.dp)
+            SearchBar(
+                hint = stringResource(id = R.string.search), modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(16.dp)
             ) {
 
             }
+
+            Spacer(modifier = Modifier.height(16.dp))
+
+            PokemonList(navController = navController)
         }
     }
 }

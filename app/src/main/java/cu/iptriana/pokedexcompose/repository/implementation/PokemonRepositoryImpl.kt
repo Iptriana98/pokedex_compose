@@ -1,5 +1,6 @@
 package cu.iptriana.pokedexcompose.repository.implementation
 
+import android.util.Log
 import cu.iptriana.pokedexcompose.data.remote.PokeApi
 import cu.iptriana.pokedexcompose.data.remote.response.pokemon_detail.Pokemon
 import cu.iptriana.pokedexcompose.data.remote.response.pokemon_list.PokemonList
@@ -19,6 +20,7 @@ internal class PokemonRepositoryImpl @Inject constructor(
         } catch (e: Exception){
             return Resource.Error(message = "An error ocurred.")
         }
+        Log.i("PokemonList", "getPokemonList: $response")
         return Resource.Success(response)
     }
 
