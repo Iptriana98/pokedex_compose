@@ -15,6 +15,7 @@ import cu.iptriana.pokedexcompose.repository.PokemonRepo
 import cu.iptriana.pokedexcompose.util.Constants.PAGE_SIZE
 import cu.iptriana.pokedexcompose.util.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -29,8 +30,40 @@ class PokemonListViewModel @Inject constructor(
     var isLoading = mutableStateOf(false)
     var endReached = mutableStateOf(false)
 
+    private var cachedPokemonList = listOf<PokedexListEntry>()
+    private var isSearchStarting = true
+    var isSearching = mutableStateOf(false)
+    var nameSearched = mutableStateOf("")
+
     init {
         loadPokemon()
+    }
+
+    fun searchPokemonList(query: String) {
+        val listToSearch = if (isSearchStarting) pokemonList.value else cachedPokemonList
+
+        viewModelScope.launch(Dispatchers.Default) {
+            if (query.isEmpty()) {
+                pokemonList.value = cachedPokemonList
+                isSearchStarting = true
+                isSearching.value = false
+                return@launch
+            }
+
+            val results = listToSearch.filter {
+                it.pokemonName.contains(
+                    query.trim(),
+                    ignoreCase = true
+                ) || it.number.toString() == query.trim()
+            }
+
+            if (isSearchStarting){
+                cachedPokemonList = pokemonList.value
+                isSearchStarting = false
+            }
+            pokemonList.value = results
+            isSearching.value = true
+        }
     }
 
     fun loadPokemon() = viewModelScope.launch {
