@@ -1,8 +1,6 @@
 package cu.iptriana.pokedexcompose.ui.composables.pokemon_detail
 
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.offset
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.MaterialTheme
@@ -25,8 +23,8 @@ internal fun PokemonDetailSection(
     val scrollState = rememberScrollState()
     Column(
         horizontalAlignment = Alignment.CenterHorizontally, modifier = modifier
-            .fillMaxSize()
-            .offset(y = 100.dp)
+            .fillMaxWidth()
+            .offset(y = 70.dp)
             .verticalScroll(scrollState)
     ) {
         Text(
@@ -40,5 +38,6 @@ internal fun PokemonDetailSection(
 
         PokemonTypeSection(types = pokemonInfo.types)
         PokemonDetailDataSection(pokemonWeight = pokemonInfo.weight, pokemonHeight = pokemonInfo.height)
+        PokemonBaseStats(pokemonInfo = pokemonInfo)
     }
 }
