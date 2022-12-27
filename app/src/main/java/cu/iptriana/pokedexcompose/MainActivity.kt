@@ -14,6 +14,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
+import cu.iptriana.pokedexcompose.ui.composables.pokemon_detail.PokemonDetailScreen
 import cu.iptriana.pokedexcompose.ui.composables.pokemon_list.PokemonListScreen
 import cu.iptriana.pokedexcompose.ui.theme.PokedexComposeTheme
 import cu.iptriana.pokedexcompose.util.Constants.DOMINANT_COLOR
@@ -33,7 +34,7 @@ class MainActivity : ComponentActivity() {
                 val navController = rememberNavController()
                 // Remember a SystemUiController
                 val systemUiController = rememberSystemUiController()
-                val useDarkIcons = !isSystemInDarkTheme()
+                val useDarkIcons = isSystemInDarkTheme()
 
                 DisposableEffect(systemUiController, useDarkIcons) {
                     // Update all of the system bar colors to be transparent, and use
@@ -44,7 +45,7 @@ class MainActivity : ComponentActivity() {
                             darkIcons = useDarkIcons
                         )
 
-                        setNavigationBarColor(color = Color.Transparent, darkIcons = useDarkIcons)
+                        setNavigationBarColor(color = Color.Transparent, darkIcons = !useDarkIcons)
                         onDispose {}
                     }
                 }
@@ -73,6 +74,12 @@ class MainActivity : ComponentActivity() {
                         val pokemonName = remember {
                             it.arguments?.getString(POKEMON_NAME)
                         }
+
+                        PokemonDetailScreen(
+                            dominantColor = domainColor,
+                            pokemonName = pokemonName?.lowercase() ?: "",
+                            navController = navController,
+                        )
                     }
                 }
             }

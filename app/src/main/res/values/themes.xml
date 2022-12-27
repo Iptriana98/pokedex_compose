@@ -3,5 +3,6 @@
 
     <style name="Theme.PokedexCompose" parent="android:Theme.Material.Light.NoActionBar">
         <item name="android:statusBarColor">@color/white</item>
+        <item name="android:colorControlNormal">@color/light_gray</item>
     </style>
 </resources>
